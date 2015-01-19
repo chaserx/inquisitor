@@ -61,3 +61,6 @@ end
 # Some reasonable guesses
 gem 'cancancan', '~> 1.9' # authorization
 gem 'sidekiq', '~> 3.3' # background jobs
+
+# for SMSing
+gem 'twilio-ruby', '~> 3.14.4'
