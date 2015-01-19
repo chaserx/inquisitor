@@ -3,7 +3,7 @@ execute 'add-apt-repository --yes ppa:brightbox/ruby-ng'
 execute 'apt-get update'
 
 include_recipe 'annoyances'
-#node.set['build-essential']['compile_time'] = true
+# node.set['build-essential']['compile_time'] = true
 include_recipe 'build-essential'
 
 package 'postgresql-client'
