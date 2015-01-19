@@ -1,0 +1,6 @@
+cp dotenv.sample .env
+bundle install --deployment --path vendor/bundle
+bundle exec rake db:setup
+bundle exec rake db:test:prepare
+bundle exec rake spec
+bundle exec rubocop -c .rubocop.yml
