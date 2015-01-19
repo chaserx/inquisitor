@@ -10,6 +10,7 @@ AllCops:
     - db/schema.rb
     - db/seeds.rb
     - Gemfile
+    - config/unicorn*
 
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
