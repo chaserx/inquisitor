@@ -64,3 +64,6 @@ gem 'sidekiq', '~> 3.3' # background jobs
 
 # for SMSing
 gem 'twilio-ruby', '~> 3.14.4'
+
+# for haml views
+gem 'haml-rails', '~> 0.7.0'
