@@ -2,13 +2,18 @@ require 'rails_helper'
 
 RSpec.describe CellPhonesController, type: :controller do
   describe 'POST create' do
-    before { post :create, number: '8595551212' }
+    let(:make_request) {
+      post :create, cell_phone: attributes_for(:cell_phone)
+    }
 
     it 'responds successfully' do
-      expect(response).to be_success
+      make_request
+      expect(assigns(:cell_phone)).to be_a(CellPhone)
+      expect(assigns(:cell_phone)).to be_persisted
     end
 
     it 'redirects to show' do
+      make_request
       expect(response).to redirect_to(cell_phone_path(assigns(:cell_phone)))
     end
   end

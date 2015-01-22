@@ -38,7 +38,7 @@ class CellPhonesController < ApplicationController
   private
 
   def cell_phone_params
-    params.permit(:number)
+    params.require(:cell_phone).permit(:number)
   end
 
   def set_cell_phone
