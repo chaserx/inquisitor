@@ -1,9 +1,9 @@
 class CellPhone < ActiveRecord::Base
+  # TODO(chase): add uniqueness to validation: {scope: :user_id}
   validates :number, presence: true,
                      format: {with: /\A\+\d{11}\z/,
                               message: 'is invalid, please format like ' +
-                                       '+18598675309'},
-                     uniqueness: {scope: :user_id}
+                                       '+18598675309'}
 
   before_create :set_random_auth_code
   after_update :reset_verification!, if: :verified_and_changed?
@@ -19,8 +19,10 @@ class CellPhone < ActiveRecord::Base
   end
 
   def self.generate_auth_code
-    "%05d" % SecureRandom.random_number(99999)
+    '%05d' % SecureRandom.random_number(99999)
   end
+
+  private
 
   def set_random_auth_code
     self.auth_code = self.class.generate_auth_code

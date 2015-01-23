@@ -10,10 +10,11 @@ class CellPhonesController < ApplicationController
     if @cell_phone.save
       flash[:notice] = 'Saved! We will send you a code to ' +
                        'verify your number.'
+      redirect_to cell_phone_path(@cell_phone)
     else
       flash[:warning] = 'Failed to save phone number.'
+      render :new
     end
-    redirect_to cell_phone_path(@cell_phone)
   end
 
   def show
