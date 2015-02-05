@@ -36,4 +36,4 @@ dotenv.sample to .env and supply your Twilio keys and phone number.
 
 ## Contribution
 
-Pull requests accepted. Please see the Contribution Guide.
+Pull requests accepted. Please see the [Contribution Guide](CONTRIBUTING.md).
