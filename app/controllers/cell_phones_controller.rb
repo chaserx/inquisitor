@@ -29,7 +29,15 @@ class CellPhonesController < ApplicationController
   def destroy
   end
 
+  # POST /cell_phones/1/verify
   def verify
+    if @cell_phone.auth_code.to_s == params[:verification_code].to_s
+      @cell_phone.verified!
+      flash[:notice] = 'Thanks! Your phone number is now verified.'
+    else
+      flash[:warning] = 'Invalid verification code.'
+    end
+    redirect_to edit_cell_phone_path(@cell_phone)
   end
 
   def reset

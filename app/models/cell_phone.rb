@@ -22,6 +22,10 @@ class CellPhone < ActiveRecord::Base
     '%05d' % SecureRandom.random_number(99999)
   end
 
+  def verified!
+    update_attribute(:verified, true)
+  end
+
   private
 
   def set_random_auth_code
