@@ -66,3 +66,9 @@ gem 'haml-rails', '~> 0.7.0'
 
 gem 'bourbon', '~> 4.1.1'
 
+gem 'neat', '~> 1.7.1'
+
+gem 'bitters', '~> 1.0.0'
+
+gem 'refills', '~> 0.1.0'
+
