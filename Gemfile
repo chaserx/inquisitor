@@ -40,6 +40,7 @@ gem 'dotenv-rails', '~> 1.0.2'
 # Testing
 group :development, :test do
   gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'rubocop', '~> 0.28.0'
