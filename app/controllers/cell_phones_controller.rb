@@ -49,7 +49,7 @@ class CellPhonesController < ApplicationController
     else
       flash[:warning] = 'Invalid verification code.'
     end
-    redirect_to edit_cell_phone_path(@cell_phone)
+    redirect_to cell_phone_path(@cell_phone)
   end
 
   # POST /cell_phones/1/reset
@@ -59,7 +59,7 @@ class CellPhonesController < ApplicationController
     else
       flash[:warning] = 'We could not reset your authorization code.'
     end
-    redirect_to edit_cell_phone_path(@cell_phone)
+    redirect_to cell_phone_path(@cell_phone)
   end
 
   private

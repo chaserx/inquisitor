@@ -1,0 +1,11 @@
+- if @cell_phone.errors.any?
+  #error_explanation.alert.alert-danger
+    %ul.list-unstyled
+      - @cell_phone.errors.full_messages.each do |msg|
+        %li= msg
+= form_for(@cell_phone, html: {role: 'form'}) do |f|
+  .form-group
+    = f.label :number, 'Phone Number'
+    = f.text_field :number, class: 'form-control', placeholder: '18598675309'
+  .form-group
+    = f.submit 'Save Cell Phone', class: 'btn btn-primary'
