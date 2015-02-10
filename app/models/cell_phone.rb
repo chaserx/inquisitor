@@ -26,6 +26,10 @@ class CellPhone < ActiveRecord::Base
     update_attribute(:verified, true)
   end
 
+  def unverified?
+    !verified?
+  end
+
   private
 
   def set_random_auth_code
