@@ -12,3 +12,4 @@ supports 'ubuntu'
 # Track dependencies for berkself
 depends 'annoyances'
 depends 'build-essential'
+depends 'nodejs'

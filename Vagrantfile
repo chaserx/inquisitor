@@ -15,7 +15,7 @@ Vagrant.configure(api_version='2') do |config|
     app.vm.box = 'ubuntu/trusty64'
 
     app.vm.provider 'virtualbox' do |box|
-      box.memory = 1024
+      box.memory = 2048
     end
 
     app.vm.synced_folder '.', '/home/vagrant/inquisitor'
