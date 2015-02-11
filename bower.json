@@ -1,0 +1,17 @@
+{
+  "name": "inquisitor",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.95.2"
+  }
+}

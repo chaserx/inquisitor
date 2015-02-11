@@ -14,6 +14,7 @@
 .env
 .vagrant
 /coverage/*
+/vendor/assets/components/*
 
 .vagrant/machines/inquisitor/virtualbox/action_provision
 
