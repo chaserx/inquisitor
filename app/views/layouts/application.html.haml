@@ -6,4 +6,14 @@
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body
-    = yield
+    %nav.light-blue.lighten-1{role: 'navigation'}
+      .container
+        .nav-wrapper
+          %a{id: 'logo-container', class: 'brand-logo', href: "#"} Inquisitor
+    .container
+      .section
+        .row
+          .col.s12.m4
+            = yield
+    = javascript_include_tag 'application'
+

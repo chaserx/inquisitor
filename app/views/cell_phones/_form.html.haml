@@ -3,9 +3,12 @@
     %ul.list-unstyled
       - @cell_phone.errors.full_messages.each do |msg|
         %li= msg
-= form_for(@cell_phone, html: {role: 'form'}) do |f|
-  .form-group
-    = f.label :number, 'Phone Number'
-    = f.text_field :number, class: 'form-control', placeholder: '18598675309'
-  .form-group
-    = f.submit 'Save Cell Phone', class: 'btn btn-primary'
+
+.row
+  = form_for(@cell_phone, html: {role: 'form', class: 'col s12'}) do |f|
+    .row
+      .input-field.col.s12
+        = f.telephone_field :number, class: 'validate'
+        = f.label :number, 'Mobile Phone Number'
+
+    = f.submit 'Save', class: 'btn light-blue darken-3'
