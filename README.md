@@ -29,6 +29,10 @@ and foreman to run the required services.
 A chef cookbook is also included so you can add it to your Berksfile and
 call `inquisitor::development` to create a database and be ready to run.
 
+### Bower
+
+Using Bower to manage assets... `bower install` or `bower update`
+
 ## Twilio
 
 You'll need to get a Twilio account and a phone number that can SMS. Copy the
