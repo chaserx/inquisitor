@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CellPhone, type: :model do
+RSpec.describe MobilePhone, type: :model do
   it 'requires a number' do
     expect(subject).to have(2).errors_on(:number)
   end
