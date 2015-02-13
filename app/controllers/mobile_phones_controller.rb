@@ -1,4 +1,4 @@
-class CellPhonesController < ApplicationController
+class MobilePhonesController < ApplicationController
   before_action :set_cell_phone, except: [:new, :create]
 
   # GET /cell_phones/new

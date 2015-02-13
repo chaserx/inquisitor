@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150119021557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cell_phones", force: :cascade do |t|
+  create_table "mobile_phones", force: :cascade do |t|
     t.string   "number"
     t.string   "auth_code"
     t.boolean  "verified"

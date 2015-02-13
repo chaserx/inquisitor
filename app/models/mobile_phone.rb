@@ -1,4 +1,4 @@
-class CellPhone < ActiveRecord::Base
+class MobilePhone < ActiveRecord::Base
   # TODO(chase): add uniqueness to validation: {scope: :user_id}
   validates :number, presence: true,
                      format: {with: /\A\+\d{11}\z/,
