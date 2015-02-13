@@ -7,8 +7,8 @@
 .row
   = form_for(@cell_phone, html: {role: 'form', class: 'col s12'}) do |f|
     .row
-      .input-field.col.s12
+      .input-field.col.s12.m4
         = f.telephone_field :number, class: 'validate'
         = f.label :number, 'Mobile Phone Number'
-
-    = f.submit 'Save', class: 'btn light-blue darken-3'
+    .row
+      = f.submit 'Save', class: 'btn light-blue darken-3'

@@ -10,10 +10,14 @@
       .container
         .nav-wrapper
           %a{id: 'logo-container', class: 'brand-logo', href: "#"} Inquisitor
-    .container
-      .section
-        .row
-          .col.s12.m4
-            = yield
+    .row
+      .col.s3.l3
+        %ul.collection
+          %li.collection-item Settings
+          %li.collection-item Questions
+          %li.collection-item Summary
+
+      .col.s9.l9
+        = yield
     = javascript_include_tag 'application'
 
