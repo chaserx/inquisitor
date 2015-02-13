@@ -17,7 +17,7 @@ RSpec.describe MobilePhone, type: :model do
   end
 
   context 'a verified cell phone number' do
-    subject { create(:cell_phone, :verified) }
+    subject { create(:mobile_phone, :verified) }
 
     it 'can be reset' do
       subject.reset_verification!

@@ -1,11 +1,11 @@
-- if @cell_phone.errors.any?
+- if @mobile_phone.errors.any?
   #error_explanation.alert.alert-danger
     %ul.list-unstyled
-      - @cell_phone.errors.full_messages.each do |msg|
+      - @mobile_phone.errors.full_messages.each do |msg|
         %li= msg
 
 .row
-  = form_for(@cell_phone, html: {role: 'form', class: 'col s12'}) do |f|
+  = form_for(@mobile_phone, html: {role: 'form', class: 'col s12'}) do |f|
     .row
       .input-field.col.s12.m4
         = f.telephone_field :number, class: 'validate'

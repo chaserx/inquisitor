@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :cell_phones, except: [:index] do
+  resources :mobile_phones, except: [:index] do
     member do
       post :verify
       get  :reset

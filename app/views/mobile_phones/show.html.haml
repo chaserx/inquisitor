@@ -1,11 +1,11 @@
-- if @cell_phone.unverified?
-  - if @cell_phone.errors.any?
+- if @mobile_phone.unverified?
+  - if @mobile_phone.errors.any?
     #error_explanation.alert.alert-danger
       %ul.list-unstyled
-        - @cell_phone.errors.full_messages.each do |msg|
+        - @mobile_phone.errors.full_messages.each do |msg|
           %li= msg
 
-  = form_tag(verify_cell_phone_path(@cell_phone), class: 'form-inline', role: 'form') do
+  = form_tag(verify_mobile_phone_path(@mobile_phone), class: 'form-inline', role: 'form') do
     .form-group
       = label_tag :verification_code, 'Verification Code', class: 'sr-only'
       = text_field_tag :verification_code, nil, class: 'form-control', maxlength: 5, placeholder: 'Code'
@@ -16,9 +16,9 @@
       = submit_tag 'Verify', class: 'btn btn-primary'
 - else
   %p
-    = @cell_phone.number
+    = @mobile_phone.number
     is verified.
 
-- if @cell_phone.unverified?
+- if @mobile_phone.unverified?
   %section
-    = link_to 'Resend code', reset_cell_phone_path(@cell_phone), class: 'btn btn-default'
+    = link_to 'Resend code', reset_mobile_phone_path(@mobile_phone), class: 'btn btn-default'

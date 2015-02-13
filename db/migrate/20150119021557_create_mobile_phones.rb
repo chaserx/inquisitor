@@ -5,6 +5,7 @@ class CreateMobilePhones < ActiveRecord::Migration
       t.string   :auth_code
       t.boolean  :verified
       t.boolean  :disabled
+      t.belongs_to :user, index: true
       t.timestamps null: false
     end
   end
