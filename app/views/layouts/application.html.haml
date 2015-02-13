@@ -9,7 +9,14 @@
     %nav.light-blue.lighten-1{role: 'navigation'}
       .container
         .nav-wrapper
-          %a{id: 'logo-container', class: 'brand-logo', href: "#"} Inquisitor
+          %a{id: 'logo-container', class: 'brand-logo', href: "#"}Inquisitor
+          %ul.right
+            - if current_user
+              %li= link_to current_user.email, edit_user_path(current_user.id)
+              %li= link_to "Logout", :logout, method: :post
+            - else
+              %li= link_to "Register", new_user_path
+              %li= link_to "Login", :login
     .row
       .col.s3.l3
         %ul.collection
