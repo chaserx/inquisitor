@@ -31,8 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # Authentication
-gem 'devise', '~> 3.4.1'
-gem 'omniauth-oauth2', '~> 1.2.0'
+gem 'sorcery', '~> 0.9.0'
 
 # Configuration
 gem 'dotenv-rails', '~> 1.0.2'
