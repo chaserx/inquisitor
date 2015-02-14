@@ -18,10 +18,9 @@
             %li= link_to "Login", :login
     .row
       .col.s3.l3
-        %ul.collection
-          %li.collection-item Settings
-          %li.collection-item Questions
-          %li.collection-item Summary
+        %ul
+          - if current_user
+            %li= link_to 'Mobile Phone', class: 'btn-flat'
 
       .col.s9.l9
         = yield

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    email "MyString"
-    crypted_password "MyString"
+    email 'MyString'
+    crypted_password 'MyString'
   end
 end

@@ -1,7 +1,9 @@
 # The first thing you need to configure is which modules you need in your app.
-# The default is nothing which will include only core features (password encryption, login/logout).
+# The default is nothing which will include only core features
+# (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
-# :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
+# :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
+# :external
 Rails.application.config.sorcery.submodules = []
 
 # Here you can configure each submodule's features.
@@ -15,7 +17,8 @@ Rails.application.config.sorcery.configure do |config|
 
 
   # When a non logged in user tries to enter a page that requires login, save
-  # the URL he wanted to reach, and send him there after login, using 'redirect_back_or_to'.
+  # the URL he wanted to reach, and send him there after login,
+  # using 'redirect_back_or_to'.
   # Default: `true`
   #
   # config.save_return_to_url =
@@ -47,7 +50,8 @@ Rails.application.config.sorcery.configure do |config|
 
 
   # -- http_basic_auth --
-  # What realm to display for which controller name. For example {"My App" => "Application"}
+  # What realm to display for which controller name.
+  # For example {"My App" => "Application"}
   # Default: `{"application" => "Application"}`
   #
   # config.controller_to_realm_map =
@@ -73,7 +77,8 @@ Rails.application.config.sorcery.configure do |config|
 
 
   # -- external --
-  # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce] .
+  # What providers are supported by this app,
+  # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce]
   # Default: `[]`
   #
   # config.external_providers =
@@ -88,7 +93,8 @@ Rails.application.config.sorcery.configure do |config|
 
   # For information about LinkedIn API:
   # - user info fields go to https://developer.linkedin.com/documents/profile-fields
-  # - access permissions go to https://developer.linkedin.com/documents/authentication#granting
+  # - access permissions go to
+  #   https://developer.linkedin.com/documents/authentication#granting
   #
   # config.linkedin.key = ""
   # config.linkedin.secret = ""
@@ -458,5 +464,5 @@ Rails.application.config.sorcery.configure do |config|
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = "User"
+  config.user_class = 'User'
 end

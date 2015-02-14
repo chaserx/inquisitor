@@ -11,6 +11,7 @@ AllCops:
     - db/seeds.rb
     - Gemfile
     - config/unicorn*
+    - config/initializers/sorcery.rb
 
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
