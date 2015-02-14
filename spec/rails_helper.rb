@@ -6,6 +6,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'factory_girl_rails'
 require 'database_cleaner'
+require 'sidekiq/testing'
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -29,6 +31,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryGirl::Syntax::Methods
+  config.include Sorcery::TestHelpers::Rails::Controller
 
   config.render_views
 
@@ -41,9 +44,21 @@ RSpec.configure do |config|
     end
   end
 
-  config.before(:each) do
+  config.before(:each) do |example|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
+    # Clears out the jobs for tests using the fake testing
+    Sidekiq::Worker.clear_all
+
+    if example.metadata[:sidekiq] == :fake
+      Sidekiq::Testing.fake!
+    elsif example.metadata[:sidekiq] == :inline
+      Sidekiq::Testing.inline!
+    elsif example.metadata[:type] == :feature
+      Sidekiq::Testing.inline!
+    else
+      Sidekiq::Testing.fake!
+    end
   end
 
   config.before(:each, js: true) do

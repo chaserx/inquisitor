@@ -43,6 +43,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.5'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'rubocop', '~> 0.28.0'
+  gem 'faker', '~> 1.4.3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

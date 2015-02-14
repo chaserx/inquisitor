@@ -12,7 +12,7 @@ RSpec.describe MobilePhone, type: :model do
 
   describe 'generate_auth_code' do
     it 'generates a 5-digit number' do
-      expect(CellPhone.generate_auth_code.to_s).to match(/\d{5}/)
+      expect(MobilePhone.generate_auth_code.to_s).to match(/\d{5}/)
     end
   end
 
