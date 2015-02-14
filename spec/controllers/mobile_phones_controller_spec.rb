@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe MobilePhonesController, type: :controller do
+  context 'when a user is not signed in' do
+    describe 'POST create' do
+      let(:make_request) {
+        post :create, mobile_phone: attributes_for(:mobile_phone)
+      }
+
+      it 'does not create a new mobile phone' do
+        expect{make_request}.not_to change(MobilePhone, :count)
+      end
+
+      it 'redirects to login path' do
+        make_request
+        expect(response).to redirect_to(login_path)
+      end
+    end
+  end
+
   context 'when a user is signed in' do
     let(:user) { create(:user) }
 
