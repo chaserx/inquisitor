@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.28.0'
   gem 'faker', '~> 1.4.3'
   gem 'capybara', '~> 2.4.4'
+  gem 'awesome_print', '~> 1.6.1'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
