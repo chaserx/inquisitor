@@ -1,3 +1,45 @@
 .sidebar {
   background-color: #FAFAFA;
 }
+
+.side-nav {
+  display: block;
+  margin: 0;
+  padding: 0.77778rem 0;
+  list-style-type: none;
+  list-style-position: outside;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+}
+.side-nav li {
+  margin: 0 0 0.38889rem 0;
+  font-size: 0.77778rem;
+  font-weight: normal;
+}
+.side-nav li a:not(.button) {
+  display: block;
+  color: #008CBA;
+  margin: 0;
+  padding: 0.38889rem 0.77778rem;
+}
+.side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
+  background: rgba(0, 0, 0, 0.025);
+  color: #1cc7ff;
+}
+.side-nav li.active > a:first-child:not(.button) {
+  color: #1cc7ff;
+  font-weight: normal;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+}
+.side-nav li.divider {
+  border-top: 1px solid;
+  height: 0;
+  padding: 0;
+  list-style: none;
+  border-top-color: white;
+}
+.side-nav li.heading {
+  color: #008CBA;
+  font-size: 0.77778rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
