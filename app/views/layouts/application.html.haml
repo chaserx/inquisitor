@@ -2,27 +2,40 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title Inquisitor
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body
-    %nav.light-blue.lighten-1{role: 'navigation'}
-      .nav-wrapper
-        %a{id: 'logo-container', class: 'brand-logo', href: "#"}Inquisitor
-        %ul.right{id: 'nav-mobile'}
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{:href => "#"} INQUISITOR
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        %li.toggle-topbar.menu-icon
+          %a{:href => "#"}
+            %span Menu
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
           - if current_user
             %li= link_to current_user.email, edit_user_path(current_user.id)
             %li= link_to "Logout", :logout, method: :post
           - else
             %li= link_to "Register", new_user_path
             %li= link_to "Login", :login
-    .row
-      .col.s3.l3
-        %ul
-          - if current_user
-            %li= link_to 'Mobile Phone', class: 'btn-flat'
+        / Left Nav Section
+        %ul.left
+          %li
+            %a{:href => "#"} Left Nav Button
 
-      .col.s9.l9
+    .row
+      .large-3.columns.sidebar
+        %ul
+          %li= link_to 'Mobile Phone', class: 'btn-flat'
+
+      .large-9.columns
         = yield
     = javascript_include_tag 'application'
 

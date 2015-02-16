@@ -12,6 +12,7 @@
     "tests"
   ],
   "dependencies": {
-    "materialize": "~0.95.2"
+    "mailcheck": "~1.1.0",
+    "foundation": "zurb/bower-foundation#~5.5.1"
   }
 }

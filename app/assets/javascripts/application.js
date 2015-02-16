@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require materialize
+//= require mailcheck
+//= require modernizr/modernizr
+//= require foundation/js/foundation.min
 //= require_tree .
