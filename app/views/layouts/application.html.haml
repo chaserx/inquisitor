@@ -29,12 +29,11 @@
         %ul.left
           %li
             %a{:href => "#"} Left Nav Button
-
-    .row
+    %section{role: 'main'}
       .large-3.columns.sidebar
-        %ul
-          %li= link_to 'Mobile Phone', class: 'btn-flat'
-
+        %ul.sidenav
+          %li.heading Actions
+          %li= link_to 'Mobile Phone'
       .large-9.columns
         = yield
     = javascript_include_tag 'application'
