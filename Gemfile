@@ -46,6 +46,7 @@ group :development, :test do
   gem 'faker', '~> 1.4.3'
   gem 'capybara', '~> 2.4.4'
   gem 'awesome_print', '~> 1.6.1'
+  gem 'simplecov', '~> 0.9.1'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
