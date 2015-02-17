@@ -20,9 +20,16 @@ execute 'bin/bundle' do
   environment 'HOME' => '/home/vagrant'
   cwd '/home/vagrant/inquisitor'
 end
+
 execute 'bin/rake db:reset' do
   user 'vagrant'
   environment 'HOME' => '/home/vagrant'
   cwd '/home/vagrant/inquisitor'
   only_if { File.file?('/home/vagrant/inquisitor/db/schema.rb') }
+end
+
+execute 'bower install --save' do
+  user 'vagrant'
+  environment 'HOME' => '/home/vagrant'
+  cwd '/home/vagrant/inquisitor'
 end

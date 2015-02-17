@@ -20,3 +20,6 @@ nodejs_npm 'bower'
 
 execute 'gem install bundler'
 execute 'gem install unicorn'
+
+include_recipe 'redisio'
+include_recipe 'redisio::enable'
