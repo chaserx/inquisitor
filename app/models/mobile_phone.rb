@@ -43,6 +43,6 @@ class MobilePhone < ActiveRecord::Base
   end
 
   def unverified_and_new_auth_code?
-    !!verified? && auth_code_changed?
+    unverified? && auth_code_changed?
   end
 end
