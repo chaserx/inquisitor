@@ -38,11 +38,11 @@
             - if current_user.mobile_phone
               %li
                 = link_to edit_mobile_phone_path(current_user.mobile_phone) do
-                  %i.fa.fa-mobile 'Update Mobile Phone'
+                  %i.fa.fa-mobile Update Mobile Phone
             - else
               %li
                 = link_to new_mobile_phone_path do
-                  %i.fa.fa-plus 'Add Mobile Phone'
+                  %i.fa.fa-plus Add Mobile Phone
       .large-9.columns
         = yield
     %footer.text-center
