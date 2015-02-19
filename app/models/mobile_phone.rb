@@ -4,7 +4,8 @@ class MobilePhone < ActiveRecord::Base
   validates :number, presence: true,
                      format: {with: /\A\+\d{11}\z/,
                               message: 'is invalid, please format like ' +
-                                       '+18598675309'}
+                                       '+18598675309'},
+                     uniqueness: {scope: :user_id}
 
   before_create :set_random_auth_code
   after_update :reset_verification!, if: :verified_and_changed?

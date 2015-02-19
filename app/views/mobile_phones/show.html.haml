@@ -1,17 +1,18 @@
 - if @mobile_phone.unverified?
   - if @mobile_phone.errors.any?
-    #error_explanation.alert.alert-danger
+    #error_explanation.alert-box.warning{data: alert}
       %ul.list-unstyled
         - @mobile_phone.errors.full_messages.each do |msg|
           %li= msg
+      %a{href: "#", class: "close"} &times;
 
-  = form_tag(verify_mobile_phone_path(@mobile_phone), class: 'form-inline', role: 'form') do
+  = form_tag(verify_user_mobile_phone_path(current_user, @mobile_phone), class: 'form-inline', role: 'form') do
     .form-group
       = label_tag :verification_code, 'Verification Code', class: 'sr-only'
       = text_field_tag :verification_code, nil, class: 'form-control', maxlength: 5, placeholder: 'Code'
     %p.help-block
-      Please use the passcode sent previously via text message to verify
-      your phone number.
+      Please use the passcode sent previously via SMS to verify
+      your mobile phone number.
     .form-group
       = submit_tag 'Verify', class: 'btn btn-primary'
 - else
@@ -21,4 +22,4 @@
 
 - if @mobile_phone.unverified?
   %section
-    = link_to 'Resend code', reset_mobile_phone_path(@mobile_phone), class: 'btn btn-default'
+    = link_to 'Resend code', reset_user_mobile_phone_path(current_user, @mobile_phone), class: 'btn btn-default'

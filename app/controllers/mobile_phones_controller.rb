@@ -12,7 +12,7 @@ class MobilePhonesController < ApplicationController
     if @mobile_phone.save
       flash[:notice] = 'Saved! We will send you a code to ' +
                        'verify your number.'
-      redirect_to mobile_phone_path(@mobile_phone)
+      redirect_to user_mobile_phone_path(current_user, @mobile_phone)
     else
       flash[:warning] = 'Failed to save phone number.'
       render :new
@@ -34,7 +34,7 @@ class MobilePhonesController < ApplicationController
     else
       flash[:warning] = 'We could not update your phone.'
     end
-    redirect_to mobile_phone_path(@mobile_phone)
+    redirect_to user_mobile_phone_path(current_user, @mobile_phone)
   end
 
   # DELETE /mobile_phones/1
@@ -49,7 +49,7 @@ class MobilePhonesController < ApplicationController
     else
       flash[:warning] = 'Invalid verification code.'
     end
-    redirect_to mobile_phone_path(@mobile_phone)
+    redirect_to user_mobile_phone_path(current_user, @mobile_phone)
   end
 
   # POST /mobile_phones/1/reset
@@ -59,7 +59,7 @@ class MobilePhonesController < ApplicationController
     else
       flash[:warning] = 'We could not reset your authorization code.'
     end
-    redirect_to mobile_phone_path(@mobile_phone)
+    redirect_to user_mobile_phone_path(current_user, @mobile_phone)
   end
 
   private

@@ -4,7 +4,7 @@ RSpec.describe MobilePhonesController, type: :controller do
   context 'when a user is not signed in' do
     describe 'POST create' do
       let(:make_request) {
-        post :create, mobile_phone: attributes_for(:mobile_phone)
+        post :create, user_id: 1, mobile_phone: attributes_for(:mobile_phone)
       }
 
       it 'does not create a new mobile phone' do
@@ -27,7 +27,7 @@ RSpec.describe MobilePhonesController, type: :controller do
 
     describe 'POST create' do
       let(:make_request) {
-        post :create, mobile_phone: attributes_for(:mobile_phone)
+        post :create, user_id: user, mobile_phone: attributes_for(:mobile_phone)
       }
 
       it 'responds successfully' do
@@ -38,7 +38,7 @@ RSpec.describe MobilePhonesController, type: :controller do
 
       it 'redirects to show' do
         make_request
-        expect(response).to redirect_to(mobile_phone_path(assigns(:mobile_phone)))
+        expect(response).to redirect_to(user_mobile_phone_path(user, assigns(:mobile_phone)))
         expect(response).to be_redirect
       end
     end

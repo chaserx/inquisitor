@@ -5,10 +5,12 @@
         %li= msg
 
 .row
-  = form_for(@mobile_phone, html: {role: 'form', class: 'col s12'}) do |f|
+  = form_for([current_user, @mobile_phone], html: {role: 'form', class: 'col s12'}) do |f|
     .row
       .input-field.col.s12.m4
         = f.telephone_field :number, class: 'validate'
         = f.label :number, 'Mobile Phone Number'
     .row
       = f.submit 'Save', class: 'btn light-blue darken-3'
+      or
+      = link_to 'Cancel', :back

@@ -37,12 +37,12 @@
           - if current_user
             - if current_user.mobile_phone
               %li
-                = link_to edit_mobile_phone_path(current_user.mobile_phone) do
-                  %i.fa.fa-mobile Update Mobile Phone
+                = link_to 'Update Mobile Phone',
+                  edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
             - else
               %li
-                = link_to new_mobile_phone_path do
-                  %i.fa.fa-plus Add Mobile Phone
+                = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+
       .large-9.columns
         = yield
     %footer.text-center
@@ -52,5 +52,8 @@
           %i.fa.fa-heart.red
           and
           %i.fa.fa-diamond.red
+        %p
+          %i.fa.fa-github
+          = link_to 'Fork me on GitHub', 'https://github.com/chaserx/inquisitor'
     = javascript_include_tag 'application'
 
