@@ -1,5 +1,7 @@
 # inquisitor
 
+[![Build Status](https://semaphoreapp.com/api/v1/projects/ed0f0e84-f00b-45c0-88bc-7d265c0e6538/333373/badge.png)](https://semaphoreapp.com/chaserx/inquisitor)
+
 ## Why?
 
 The idea of Quantified Self is interesting. The practice of QS, however,
@@ -17,7 +19,7 @@ where the most recent response will answer the last question asked.
 
 ### Start and Stop
 
-A user should be able to start and stop questions by sending those keywords.
+A user should be able to start and stop all questions by sending those keywords.
 
 ## Development
 
