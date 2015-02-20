@@ -15,6 +15,7 @@
 .vagrant
 /coverage/*
 /vendor/assets/components/*
+/public/images/draw-erd/*
 
 .vagrant/machines/inquisitor/virtualbox/action_provision
 

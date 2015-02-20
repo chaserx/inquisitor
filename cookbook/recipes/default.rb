@@ -23,3 +23,5 @@ execute 'gem install unicorn'
 
 include_recipe 'redisio'
 include_recipe 'redisio::enable'
+
+include_recipe 'graphviz::default'
