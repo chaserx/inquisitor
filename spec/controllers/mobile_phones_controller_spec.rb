@@ -38,7 +38,8 @@ RSpec.describe MobilePhonesController, type: :controller do
 
       it 'redirects to show' do
         make_request
-        expect(response).to redirect_to(user_mobile_phone_path(user, assigns(:mobile_phone)))
+        expect(response).to redirect_to(user_mobile_phone_path(user,
+                                                               assigns(:mobile_phone)))
         expect(response).to be_redirect
       end
     end
