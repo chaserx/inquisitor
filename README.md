@@ -2,6 +2,8 @@
 
 [![Build Status](https://semaphoreapp.com/api/v1/projects/ed0f0e84-f00b-45c0-88bc-7d265c0e6538/333373/badge.png)](https://semaphoreapp.com/chaserx/inquisitor)
 
+[![Stories in Ready](https://badge.waffle.io/chaserx/inquisitor.svg?label=ready&title=Ready)](http://waffle.io/chaserx/inquisitor)
+
 ## Why?
 
 The idea of Quantified Self is interesting. The practice of QS, however,
