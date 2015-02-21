@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213010957) do
+ActiveRecord::Schema.define(version: 20150221022635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "mobile_phones", force: :cascade do |t|
     t.string   "number"
@@ -29,11 +30,12 @@ ActiveRecord::Schema.define(version: 20150213010957) do
   add_index "mobile_phones", ["user_id"], name: "index_mobile_phones_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
+    t.string   "email",                         null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "settings",         default: {}, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
