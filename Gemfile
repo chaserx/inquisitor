@@ -47,7 +47,7 @@ group :development, :test do
   gem 'capybara', '~> 2.4.4'
   gem 'awesome_print', '~> 1.6.1'
   gem 'simplecov', '~> 0.9.1'
-  gem 'draw_erd', '~> 0.3.0'
+  gem 'rails-erd', '~> 1.3.0'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
