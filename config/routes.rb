@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'dashboard#index', constraints: RouteConstraints::UserRequiredConstraint.new
+  root to: 'dashboard#index', constraints: RouteConstraints::UserRequiredConstraint.new,
+       as: :dashboard
   root to: 'page#welcome', constraints: RouteConstraints::NoUserRequiredConstraint.new,
        as: :landing
 end
