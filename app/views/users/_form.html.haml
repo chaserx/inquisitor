@@ -17,7 +17,7 @@
     = f.password_field :password_confirmation
   .field
     = f.label :time_zone
-    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :name, {}, class: 'chosen-select', include_blank: true
+    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :name, {}, class: 'chosen-select', include_blank: true, selected: "Eastern Time (US & Canada)"
   %br
   .actions
     = f.submit 'Save', class: 'button'
