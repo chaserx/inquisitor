@@ -1,6 +1,7 @@
 include_recipe 'inquisitor::default'
 
 package 'postgresql'
+package 'postgresql-contrib'
 package 'libpq-dev'
 
 execute 'gem install foreman'
