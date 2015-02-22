@@ -15,5 +15,9 @@
   .field
     = f.label :password_confirmation
     = f.password_field :password_confirmation
+  .field
+    = f.label :time_zone
+    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :name, {}, class: 'chosen-select', include_blank: true
+  %br
   .actions
     = f.submit 'Save', class: 'button'
