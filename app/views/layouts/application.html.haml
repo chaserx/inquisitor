@@ -21,7 +21,10 @@
         / Right Nav Section
         %ul.right
           - if current_user
-            %li= link_to current_user.email, edit_user_path(current_user.id)
+            %li
+              = link_to edit_user_path(current_user.id) do
+                = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
+                = current_user.email
             %li= link_to "Logout", :logout, method: :post
           - else
             %li= link_to "Register", new_user_path

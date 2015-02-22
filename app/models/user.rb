@@ -8,8 +8,18 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 3 }, if: :crypted_password_changed?
   validates :password, confirmation: true, if: :crypted_password_changed?
   validates :password_confirmation, presence: true, if: :crypted_password_changed?
+  validates :email, presence: true
   validates :email, uniqueness: true, format: { with: /.+@.+\..+/i }, if: :email_changed?
   validates_inclusion_of :time_zone,
                          in: ActiveSupport::TimeZone.zones_map(&:name).keys,
                          message: 'is not a valid Time Zone'
+
+  before_save :set_gravatar_url
+
+  private
+
+  def set_gravatar_url
+    gravatar_hash = Digest::MD5.hexdigest(email)
+    self.gravatar_url = "//www.gravatar.com/avatar/#{gravatar_hash}/d=retro"
+  end
 end
