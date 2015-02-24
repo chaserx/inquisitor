@@ -43,5 +43,19 @@ RSpec.describe MobilePhonesController, type: :controller do
         expect(response).to be_redirect
       end
     end
+
+    describe 'PUT update' do
+      let(:mobile_phone) { create(:mobile_phone, user: user) }
+
+      let(:new_attributes) {
+        { number: '+18595552424' }
+      }
+
+      it 'updates the requested mobile phone' do
+        put :update, user_id: user.id, id: mobile_phone.to_param,
+            mobile_phone: new_attributes
+        expect(mobile_phone.reload.number).to eq(new_attributes[:number])
+      end
+    end
   end
 end
