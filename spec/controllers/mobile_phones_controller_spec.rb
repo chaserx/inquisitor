@@ -53,8 +53,28 @@ RSpec.describe MobilePhonesController, type: :controller do
 
       it 'updates the requested mobile phone' do
         put :update, user_id: user.id, id: mobile_phone.to_param,
-            mobile_phone: new_attributes
+                     mobile_phone: new_attributes
         expect(mobile_phone.reload.number).to eq(new_attributes[:number])
+      end
+    end
+
+    describe 'POST verify' do
+      let(:mobile_phone) { create(:mobile_phone, user: user) }
+
+      context 'with a valid verification_code' do
+        it 'verfies the mobile phone' do
+          post :verify, user_id: user.id, id: mobile_phone.to_param,
+                        verification_code: mobile_phone.auth_code
+          expect(mobile_phone.reload.verified?).to eq(true)
+        end
+      end
+
+      context 'with an invalid verification_code' do
+        it 'fails to verfy the mobile phone' do
+          post :verify, user_id: user.id, id: mobile_phone.to_param,
+                        verification_code: '0'
+          expect(mobile_phone.reload.verified?).to eq(false)
+        end
       end
     end
   end
