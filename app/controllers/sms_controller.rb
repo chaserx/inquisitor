@@ -29,7 +29,7 @@ class SMSController < ApplicationController
       formulate_response help_message
     else
       # I don't know how to do that
-      formulate_response 'Unrecognized command. Send help for help or visit SOMEURL/help'
+      formulate_response "Unrecognized command. Send help for help or visit #{help_url}"
     end
   end
 
