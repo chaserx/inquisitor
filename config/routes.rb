@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
 
+  post 'sms/receive', to: 'sms#receive'
+  get 'help', to: 'page#help', as: :help
+
   resources :users do
     resources :mobile_phones, except: [:index] do
       member do
