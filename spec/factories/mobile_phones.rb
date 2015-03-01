@@ -1,7 +1,8 @@
+require 'securerandom'
 FactoryGirl.define do
   factory :mobile_phone do
     user
-    sequence(:number) {|n| "+1859555121#{n}" }
+    number { "+1859555" + ('%04d' % SecureRandom.random_number(9999)) }
 
     trait :verified do
       verified true
