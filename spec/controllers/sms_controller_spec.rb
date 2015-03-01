@@ -6,7 +6,7 @@ RSpec.describe SMSController, type: :controller do
   describe 'receive' do
     context 'when user sends start' do
       before do
-        post :receive, number: mobile_phone.number, message: 'start'
+        post :receive, 'From' => mobile_phone.number, 'Body' => 'start'
       end
 
       it 'returns TWIML XML with a Response node' do
@@ -24,7 +24,7 @@ RSpec.describe SMSController, type: :controller do
 
     context 'when user sends stop' do
       before do
-        post :receive, number: mobile_phone.number, message: 'stop'
+        post :receive, 'From' => mobile_phone.number, 'Body' => 'stop'
       end
 
       it 'returns TWIML XML with a Response node' do
@@ -42,14 +42,14 @@ RSpec.describe SMSController, type: :controller do
 
     context 'when there is no such phone number' do
       it 'responds with unprocessable entitiy' do
-        post :receive, number: '+18598675309', message: 'start'
+        post :receive, 'From' => '+18598675309', 'Body' => 'start'
         expect(response.status).to be(422)
       end
     end
 
     context 'when the user sends a bad command' do
       before do
-        post :receive, number: mobile_phone.number, message: 'blarg'
+        post :receive, 'From' => mobile_phone.number, 'Body' => 'blarg'
       end
 
       it 'returns TWIML XML with a Response node' do
@@ -63,7 +63,7 @@ RSpec.describe SMSController, type: :controller do
 
     context 'when the user asks for help' do
       before do
-        post :receive, number: mobile_phone.number, message: 'help'
+        post :receive, 'From' => mobile_phone.number, 'Body' => 'help'
       end
 
       it 'returns TWIML XML with a Response node' do

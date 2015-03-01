@@ -46,7 +46,8 @@ dotenv.sample to .env and supply your Twilio keys and phone number.
 
 Use [ngrok](https://ngrok.com) to expose your localhost via a tunnel.
 
-1. Download client in VM. `sudo apt-get install ngrok`
+1. Download client in VM. `sudo apt-get install ngrok` (or brew install ngrok
+if you're working without vagrant + virtualbox)
 1. open tmux; split pane
 1. run `foreman start` in one pane and `ngrok -authtoken abc123xyz 3000` where
 abc123xyz is your authtoken from your ngrok account.
