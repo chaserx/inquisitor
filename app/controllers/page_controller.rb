@@ -3,4 +3,7 @@ class PageController < ApplicationController
 
   def welcome
   end
+
+  def help
+  end
 end

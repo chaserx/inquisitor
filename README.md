@@ -42,6 +42,19 @@ Using Bower to manage assets... `bower install` or `bower update`
 You'll need to get a Twilio account and a phone number that can SMS. Copy the
 dotenv.sample to .env and supply your Twilio keys and phone number.
 
+### Testing Twilio locally
+
+Use [ngrok](https://ngrok.com) to expose your localhost via a tunnel.
+
+1. Download client in VM. `sudo apt-get install ngrok` (or brew install ngrok
+if you're working without vagrant + virtualbox)
+1. open tmux; split pane
+1. run `foreman start` in one pane and `ngrok -authtoken abc123xyz 3000` where
+abc123xyz is your authtoken from your ngrok account.
+1. from the ngrok tunnel repl, add your tunnel to your twilio config for your number
+messaging config. eg. http://123456789.ngrok.com/sms/receive
+1. test away
+
 ## Contribution
 
 Pull requests accepted. Please see the [Contribution Guide](CONTRIBUTING.md).

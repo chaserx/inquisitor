@@ -32,6 +32,18 @@ class MobilePhone < ActiveRecord::Base
     !verified?
   end
 
+  def disable!
+    update_column(:disabled, true)
+  end
+
+  def enable!
+    update_column(:disabled, false)
+  end
+
+  def enabled?
+    !disabled?
+  end
+
   private
 
   def set_random_auth_code
