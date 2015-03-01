@@ -23,9 +23,9 @@ class SMSController < ApplicationController
       mobile_phone.disable!
       formulate_response 'OK. Your mobile phone has been disabled.'
     when 'help'
-      help_message = 'Send start to resume questions. ' +
-                     'Send stop to take a break from the questions. ' +
-                     "Visit #{help_url} to learn more."
+      help_message = 'Send START to resume questioning. ' +
+                     'Send STOP to stop questioning. ' +
+                     "Visit #{help_url} to learn more. Messaging & Data rates may apply."
       formulate_response help_message
     else
       # I don't know how to do that
