@@ -1,6 +1,4 @@
 FactoryGirl.define do
-  factory :sm, :class => 'SMS' do
-    
+  factory :sm, class: 'SMS' do
   end
-
 end
