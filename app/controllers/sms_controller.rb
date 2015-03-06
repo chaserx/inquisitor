@@ -24,9 +24,9 @@ class SMSController < ApplicationController
         # then do something, like send a response if appropriate
         sms_response = @sms.decipher_command params['Body']
       else
-        # raise
+        raise 'well shit'
       end
-      
+
       render xml: sms_response
     else
       # TODO(chase): wonder what happens on the twilio end of the post?
@@ -38,6 +38,6 @@ class SMSController < ApplicationController
 
   def sms_params
     { sender: params['From'], receiver: params['To'], body: params['Body'],
-     message_sid: params['MessageSid'] }
+      message_sid: params['MessageSid'] }
   end
 end
