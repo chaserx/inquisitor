@@ -71,7 +71,7 @@ RSpec.describe SMSController, type: :controller do
       end
 
       it 'contains help_url in the response body' do
-        expect(response.body).to include("Visit #{help_url} to learn more.")
+        expect(response.body).to include("Visit http://localhost:3000/help to learn more.")
       end
     end
   end

@@ -23,11 +23,10 @@ class SMSController < ApplicationController
       if @sms.save
         # then do something, like send a response if appropriate
         sms_response = @sms.decipher_command params['Body']
+        render xml: sms_response
       else
         raise 'well shit'
       end
-
-      render xml: sms_response
     else
       # TODO(chase): wonder what happens on the twilio end of the post?
       head :unprocessable_entity

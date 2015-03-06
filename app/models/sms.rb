@@ -3,6 +3,9 @@ class SMS < ActiveRecord::Base
   validates :mobile_phone, presence: true
 
   def decipher_command message
+    help_url = URI.join(ENV['ROOT_URL'], 'help')
+
+    # probably should return hard if message.empty?
     case message.downcase
     when 'start'
       mobile_phone.enable!
