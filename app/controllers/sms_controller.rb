@@ -22,8 +22,7 @@ class SMSController < ApplicationController
       @sms = SMS.new(sms_params.merge(mobile_phone_id: @mobile_phone.id))
       if @sms.save
         # then do something, like send a response if appropriate
-        sms_response = @sms.decipher_command params['Body']
-        render xml: sms_response
+        render xml: twilio_format(@sms.decipher_command(params['Body'], request.host))
       else
         raise 'well shit'
       end
@@ -38,5 +37,12 @@ class SMSController < ApplicationController
   def sms_params
     { sender: params['From'], receiver: params['To'], body: params['Body'],
       message_sid: params['MessageSid'] }
+  end
+
+  def twilio_format message
+    twiml = Twilio::TwiML::Response.new do |response|
+      response.Message message
+    end
+    twiml.text
   end
 end
