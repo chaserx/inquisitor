@@ -19,8 +19,13 @@ class SMSController < ApplicationController
     #
     @mobile_phone = MobilePhone.where(number: params['From']).first
     if @mobile_phone
-      sms_response = decipher_command @mobile_phone, params['Body']
-      render xml: sms_response
+      @sms = SMS.new(sms_params.merge(mobile_phone_id: @mobile_phone.id))
+      if @sms.save
+        # then do something, like send a response if appropriate
+        render xml: twilio_format(@sms.decipher_command(params['Body'], request.host))
+      else
+        raise 'well shit'
+      end
     else
       # TODO(chase): wonder what happens on the twilio end of the post?
       head :unprocessable_entity
@@ -29,26 +34,12 @@ class SMSController < ApplicationController
 
   private
 
-  def decipher_command mobile_phone, message
-    case message.downcase
-    when 'start'
-      mobile_phone.enable!
-      return formulate_response 'OK. Your mobile phone has been enabled.'
-    when 'stop'
-      mobile_phone.disable!
-      formulate_response 'OK. Your mobile phone has been disabled.'
-    when 'help'
-      help_message = 'Send START to resume questioning. ' +
-                     'Send STOP to stop questioning. ' +
-                     "Visit #{help_url} to learn more. Messaging & Data rates may apply."
-      formulate_response help_message
-    else
-      # I don't know how to do that
-      formulate_response "Unrecognized command. Send help for help or visit #{help_url}"
-    end
+  def sms_params
+    { sender: params['From'], receiver: params['To'], body: params['Body'],
+      message_sid: params['MessageSid'] }
   end
 
-  def formulate_response message
+  def twilio_format message
     twiml = Twilio::TwiML::Response.new do |response|
       response.Message message
     end
