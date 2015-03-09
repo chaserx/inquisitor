@@ -30,8 +30,9 @@ RSpec.describe QuestionsController, type: :routing do
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/users/1/questions/1').to route_to('questions#destroy', user_id: '1',
-                                                                              id: '1')
+      expect(delete: '/users/1/questions/1').to route_to('questions#destroy',
+                                                         user_id: '1',
+                                                         id: '1')
     end
   end
 end
