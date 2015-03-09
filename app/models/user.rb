@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def add_stock_questions
-    #?
+    # ?
   end
 end
