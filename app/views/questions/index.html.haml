@@ -1,0 +1,19 @@
+%h1 Listing questions
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @questions.each do |question|
+      %tr
+        %td= link_to 'Show', [current_user, question]
+        %td= link_to 'Edit', edit_user_question_path(current_user, question)
+        %td= link_to 'Destroy', [current_user, question], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Question', new_user_question_path(current_user)

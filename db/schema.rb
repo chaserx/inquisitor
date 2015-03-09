@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303044711) do
+ActiveRecord::Schema.define(version: 20150308011956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20150303044711) do
   end
 
   add_index "mobile_phones", ["user_id"], name: "index_mobile_phones_on_user_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "body",                            null: false
+    t.boolean  "private",         default: false
+    t.boolean  "askable",         default: true
+    t.boolean  "awaiting_answer", default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "sms", force: :cascade do |t|
     t.string   "sender"
