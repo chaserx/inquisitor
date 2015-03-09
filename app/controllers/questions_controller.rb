@@ -1,28 +1,28 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
-  # GET /questions
-  # GET /questions.json
+  # GET /users/1/questions
+  # GET /users/1/questions.json
   def index
     @questions = current_user.questions.all
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
+  # GET /users/1/questions/1
+  # GET /users/1/questions/1.json
   def show
   end
 
-  # GET /questions/new
+  # GET /users/1/questions/new
   def new
     @question = Question.new
   end
 
-  # GET /questions/1/edit
+  # GET /users/1/questions/1/edit
   def edit
   end
 
-  # POST /questions
-  # POST /questions.json
+  # POST /users/1/questions
+  # POST /users/1/questions.json
   def create
     @question = Question.new(question_params)
 
@@ -40,8 +40,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
+  # PATCH/PUT /users/1/questions/1
+  # PATCH/PUT /users/1/questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
@@ -57,8 +57,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
+  # DELETE /users/1/questions/1
+  # DELETE /users/1/questions/1.json
   def destroy
     @question.destroy
     respond_to do |format|
@@ -72,7 +72,6 @@ class QuestionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_question
     @question = Question.find(params[:id])
   end
