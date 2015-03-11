@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   has_one :mobile_phone
+  has_many :questions
 
   store_accessor :settings, :time_zone
 
@@ -21,5 +22,9 @@ class User < ActiveRecord::Base
   def set_gravatar_url
     gravatar_hash = Digest::MD5.hexdigest(email)
     self.gravatar_url = "//www.gravatar.com/avatar/#{gravatar_hash}/d=retro"
+  end
+
+  def add_stock_questions
+    # ?
   end
 end
