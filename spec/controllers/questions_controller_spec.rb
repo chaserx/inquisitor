@@ -35,7 +35,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   context 'user is signed in' do
-    let(:question) { create(:question, user: user) }
+    let!(:question) { create(:question, user: user) }
     before do
       login_user user
     end
