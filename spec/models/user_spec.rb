@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
       subject { create(:user) }
 
       describe 'new user gravatar setting' do
-       it 'sets the gravatar_url' do
+        it 'sets the gravatar_url' do
           expect(subject.gravatar_url).to be
         end
       end
