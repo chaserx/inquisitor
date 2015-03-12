@@ -43,7 +43,7 @@ RSpec.describe QuestionsController, type: :controller do
     describe 'GET #index' do
       it 'assigns all questions as @questions' do
         get :index, user_id: user.to_param
-        expect(assigns(:questions)).to eq([question])
+        expect(assigns(:questions)).to include(question)
       end
     end
 
