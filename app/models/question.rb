@@ -1,5 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :user
+  has_many :answers
+
   validates :body, presence: true, length: { in: 1..255 }
   validates :user_id, presence: true
 
