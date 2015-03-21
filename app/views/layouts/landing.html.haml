@@ -1,0 +1,54 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"}
+    %title Inquisitor
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+  %body
+    %nav.white{:role => "navigation"}
+      .nav-wrapper.container
+        = link_to 'INQUISITOR', landing_path, class: 'logo-container brand-logo'
+        %ul.right
+          %li= link_to "Register", new_user_path
+          %li= link_to "Login", login_path
+        %ul#nav-mobile.side-nav
+          %li= link_to "Register", new_user_path
+          %li= link_to "Login", login_path
+        %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
+          %i.mdi-navigation-menu
+    = yield
+    %footer.page-footer.teal
+      .container
+        .row
+          .col.l6.s12
+            %h5.white-text Company Bio
+            %p.grey-text.text-lighten-4 We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+          .col.l3.s12
+            %h5.white-text Settings
+            %ul
+              %li
+                %a.white-text{:href => "#!"} Link 1
+              %li
+                %a.white-text{:href => "#!"} Link 2
+              %li
+                %a.white-text{:href => "#!"} Link 3
+              %li
+                %a.white-text{:href => "#!"} Link 4
+          .col.l3.s12
+            %h5.white-text Connect
+            %ul
+              %li
+                %a.white-text{:href => "#!"} Link 1
+              %li
+                %a.white-text{:href => "#!"} Link 2
+              %li
+                %a.white-text{:href => "#!"} Link 3
+              %li
+                %a.white-text{:href => "#!"} Link 4
+      .footer-copyright
+        .container
+          Made by
+          %a.brown-text.text-lighten-3{:href => "http://materializecss.com"} Materialize
+    = javascript_include_tag 'application'

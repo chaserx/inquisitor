@@ -9,12 +9,11 @@
   %body
     %nav{:role => "navigation"}
       .nav-wrapper.container
-        = link_to "INQUISITOR", '#', id: 'logo-container', class: 'brand-logo center'
+        = link_to "INQUISITOR", dashboard_path, id: 'logo-container', class: 'brand-logo center'
     .row
       .col.s12.m4.l3.grey.lighten-2
         .side-nav
           %ul
-            %li.heading Actions
             - if current_user
               %li
                 = link_to 'Questions', user_questions_path(current_user)
@@ -25,20 +24,18 @@
               - else
                 %li
                   = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
-
-          - if current_user
-            %li
-              = link_to edit_user_path(current_user.id) do
-                = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
-                = current_user.email
-            %li
-              = link_to "Logout", logout_path
-          - else
-            %li= link_to "Register", new_user_path
-            %li= link_to "Login", login_path
+          .user-nav
+            %ul
+              -if current_user
+                %li
+                  = link_to edit_user_path(current_user.id) do
+                    = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
+                    = current_user.email
+                %li.text-align.center
+                  %p
+                    = link_to "Logout", logout_path
 
       .col.s12.m8.l9
         = yield
-
     = javascript_include_tag 'application'
 
