@@ -7,35 +7,39 @@
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body
-    %nav{:role => "navigation"}
-      .nav-wrapper.container
-        = link_to "INQUISITOR", dashboard_path, id: 'logo-container', class: 'brand-logo center'
     .row
-      .col.s12.m4.l3.grey.lighten-2
+      .col.s12.m4.l2.grey.lighten-2.z-depth-3
         .side-nav
+          %h5.text-align.center
+            = link_to "INQUISITOR", dashboard_path
           %ul
-            - if current_user
+            %li
+              = link_to 'Dashboard', dashboard_path
+            %li
+              = link_to 'Questions', user_questions_path(current_user)
+              %ul
+                %li
+                  + new question
+            - if current_user.mobile_phone
               %li
-                = link_to 'Questions', user_questions_path(current_user)
-              - if current_user.mobile_phone
-                %li
-                  = link_to 'Update Mobile Phone',
-                    edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
-              - else
-                %li
-                  = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+                = link_to 'Update Mobile Phone',
+                  edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
+            - else
+              %li
+                = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+            %li Download Data
           .user-nav
-            %ul
-              -if current_user
-                %li
-                  = link_to edit_user_path(current_user.id) do
-                    = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
-                    = current_user.email
-                %li.text-align.center
-                  %p
-                    = link_to "Logout", logout_path
+            %ul.text-align.center
+              %li
+                = link_to current_user.email, edit_user_path(current_user.id)
+                / = link_to edit_user_path(current_user.id) do
+                /   = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
+                /   = current_user.email
+            %hr
+            %p
+              = link_to "Logout", logout_path
 
-      .col.s12.m8.l9
+      .col.s12.m8.l10
         = yield
     = javascript_include_tag 'application'
 
