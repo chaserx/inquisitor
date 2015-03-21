@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :user_sessions
   get 'login' => 'user_sessions#new', as: :login
-  post 'logout' => 'user_sessions#destroy', as: :logout
+  get 'logout' => 'user_sessions#destroy', as: :logout
 
   post 'sms/receive', to: 'sms#receive'
   get 'help', to: 'page#help', as: :help

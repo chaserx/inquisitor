@@ -6,57 +6,39 @@
     %title Inquisitor
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-    %link{rel: "stylesheet", href: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}
   %body
-    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
-      %ul.title-area
-        %li.name
-          %h1
-            %a{:href => "#"} INQUISITOR
-        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        / Right Nav Section
-        %ul.right
+    %nav{:role => "navigation"}
+      .nav-wrapper.container
+        = link_to "INQUISITOR", '#', id: 'logo-container', class: 'brand-logo center'
+    .row
+      .col.s12.m4.l3.grey.lighten-2
+        .side-nav
+          %ul
+            %li.heading Actions
+            - if current_user
+              %li
+                = link_to 'Questions', user_questions_path(current_user)
+              - if current_user.mobile_phone
+                %li
+                  = link_to 'Update Mobile Phone',
+                    edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
+              - else
+                %li
+                  = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+
           - if current_user
             %li
               = link_to edit_user_path(current_user.id) do
                 = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
                 = current_user.email
-            %li= link_to "Logout", :logout, method: :post
+            %li
+              = link_to "Logout", logout_path
           - else
             %li= link_to "Register", new_user_path
-            %li= link_to "Login", :login
-        / Left Nav Section
-        %ul.left
-          %li
-            %a{:href => "#"} Left Nav Button
-    %section{role: 'main'}
-      .large-3.columns.sidebar
-        %ul.side-nav
-          %li.heading Actions
-          - if current_user
-            - if current_user.mobile_phone
-              %li
-                = link_to 'Update Mobile Phone',
-                  edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
-            - else
-              %li
-                = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+            %li= link_to "Login", login_path
 
-      .large-9.columns
+      .col.s12.m8.l9
         = yield
-    %footer.text-center
-      .large-12.columns
-        %p
-          Made with
-          %i.fa.fa-heart.red
-          and
-          %i.fa.fa-diamond.red
-        %p
-          %i.fa.fa-github
-          = link_to 'Fork me on GitHub', 'https://github.com/chaserx/inquisitor'
+
     = javascript_include_tag 'application'
 
