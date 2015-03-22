@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require materialize/sass/materialize
- *= require font-awesome/scss/font-awesome
+ *= require fontawesome/scss/font-awesome
  *= require_tree .
  *= require_self
  */
