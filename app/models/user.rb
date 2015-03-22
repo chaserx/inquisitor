@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                          message: 'is not a valid Time Zone'
 
   before_save :set_gravatar_url
-  after_create :add_stock_questions
+  # after_create :add_stock_questions
 
   private
 
