@@ -14,12 +14,12 @@
             = link_to "INQUISITOR", dashboard_path
           %ul
             %li
-              = link_to 'Dashboard', dashboard_path
-            %li
-              = link_to 'Questions', user_questions_path(current_user)
+              = link_to 'Questions'
               %ul
+                - current_user.questions.each do |question|
+                  %li= link_to question.body, user_question_path(current_user, question)
                 %li
-                  + new question
+                  = link_to "+ new question", new_user_question_path(current_user)
             - if current_user.mobile_phone
               %li
                 = link_to 'Update Mobile Phone',
@@ -31,10 +31,9 @@
           .user-nav
             %ul.text-align.center
               %li
-                = link_to current_user.email, edit_user_path(current_user.id)
-                / = link_to edit_user_path(current_user.id) do
-                /   = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
-                /   = current_user.email
+                = link_to edit_user_path(current_user.id) do
+                  = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
+                  = current_user.short_name
             %hr
             %p
               = link_to "Logout", logout_path

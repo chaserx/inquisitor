@@ -16,7 +16,11 @@ class User < ActiveRecord::Base
                          message: 'is not a valid Time Zone'
 
   before_save :set_gravatar_url
-  # after_create :add_stock_questions
+  after_create :add_stock_questions
+
+  def short_name
+    email[/[^@]+/]
+  end
 
   private
 
@@ -27,8 +31,7 @@ class User < ActiveRecord::Base
 
   def add_stock_questions
     Question::STOCK_QUESTIONS.each do |q|
-      question = self.questions.build(body: q)
-      question.save
+      self.questions.create(body: q)
     end
   end
 end

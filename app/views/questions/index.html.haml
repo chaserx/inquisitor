@@ -3,14 +3,14 @@
 %table
   %thead
     %tr
-      %th
+      %th Question
       %th
       %th
 
   %tbody
     - @questions.each do |question|
       %tr
-        %td= link_to 'Show', [current_user, question]
+        %td= question.body
         %td= link_to 'Edit', edit_user_question_path(current_user, question)
         %td= link_to 'Destroy', [current_user, question], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
