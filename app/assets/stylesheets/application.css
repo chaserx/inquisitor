@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require foundation/css/foundation
- *= require foundation/css/normalize
+ *= require materialize/sass/materialize
+ *= require fontawesome/scss/font-awesome
  *= require_tree .
  *= require_self
  */

@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery.min
 //= require mailcheck
-//= require modernizr/modernizr
-//= require foundation/js/foundation.min
+//= require momentjs/min/moment.min
+//= require materialize/dist/js/materialize.min
 //= require_tree .

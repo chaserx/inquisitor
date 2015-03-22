@@ -6,38 +6,20 @@
     %title Inquisitor
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-    %link{rel: "stylesheet", href: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}
   %body
-    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
-      %ul.title-area
-        %li.name
-          %h1
-            %a{:href => "#"} INQUISITOR
-        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        / Right Nav Section
-        %ul.right
-          - if current_user
+    .row
+      .col.s12.m4.l2.grey.lighten-2.z-depth-3
+        .side-nav
+          %h5.text-align.center
+            = link_to "INQUISITOR", dashboard_path
+          %ul
             %li
-              = link_to edit_user_path(current_user.id) do
-                = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
-                = current_user.email
-            %li= link_to "Logout", :logout, method: :post
-          - else
-            %li= link_to "Register", new_user_path
-            %li= link_to "Login", :login
-        / Left Nav Section
-        %ul.left
-          %li
-            %a{:href => "#"} Left Nav Button
-    %section{role: 'main'}
-      .large-3.columns.sidebar
-        %ul.side-nav
-          %li.heading Actions
-          - if current_user
+              = link_to 'Questions'
+              %ul
+                - current_user.questions.each do |question|
+                  %li= link_to question.body, user_question_path(current_user, question)
+                %li
+                  = link_to "+ new question", new_user_question_path(current_user)
             - if current_user.mobile_phone
               %li
                 = link_to 'Update Mobile Phone',
@@ -45,18 +27,18 @@
             - else
               %li
                 = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+            %li Download Data
+          .user-nav
+            %ul.text-align.center
+              %li
+                = link_to edit_user_path(current_user.id) do
+                  = image_tag current_user.gravatar_url, size: '30', class: 'gravatar'
+                  = current_user.short_name
+            %hr
+            %p
+              = link_to "Logout", logout_path
 
-      .large-9.columns
+      .col.s12.m8.l10
         = yield
-    %footer.text-center
-      .large-12.columns
-        %p
-          Made with
-          %i.fa.fa-heart.red
-          and
-          %i.fa.fa-diamond.red
-        %p
-          %i.fa.fa-github
-          = link_to 'Fork me on GitHub', 'https://github.com/chaserx/inquisitor'
     = javascript_include_tag 'application'
 

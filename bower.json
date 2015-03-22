@@ -13,6 +13,8 @@
   ],
   "dependencies": {
     "mailcheck": "~1.1.0",
-    "foundation": "zurb/bower-foundation#~5.5.1"
+    "materialize": "~0.95.3",
+    "momentjs": "~2.9.0",
+    "fontawesome": "~4.3.0"
   }
 }
