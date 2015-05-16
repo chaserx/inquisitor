@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
 
+  default_scope { order(created_at: :desc) }
+
   store_accessor :settings, :time_zone
 
   validates :password, length: { minimum: 3 }, if: :crypted_password_changed?
