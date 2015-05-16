@@ -15,54 +15,57 @@ ActiveRecord::Schema.define(version: 20150313020155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
   enable_extension "hstore"
 
-  create_table "answers", force: :cascade do |t|
+  create_table "answers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.text     "body",        null: false
-    t.integer  "question_id"
+    t.uuid     "user_id"
+    t.uuid     "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
-  create_table "mobile_phones", force: :cascade do |t|
+  create_table "mobile_phones", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "number"
     t.string   "auth_code"
     t.boolean  "verified"
     t.boolean  "disabled"
-    t.integer  "user_id"
+    t.uuid     "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "mobile_phones", ["user_id"], name: "index_mobile_phones_on_user_id", using: :btree
 
-  create_table "questions", force: :cascade do |t|
+  create_table "questions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "body",                            null: false
     t.boolean  "private",         default: false
     t.boolean  "askable",         default: true
     t.boolean  "awaiting_answer", default: false
-    t.integer  "user_id"
+    t.uuid     "user_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
-  create_table "sms", force: :cascade do |t|
+  create_table "sms", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "sender"
     t.string   "receiver"
     t.string   "body"
     t.string   "message_sid"
-    t.integer  "mobile_phone_id"
+    t.uuid     "mobile_phone_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   add_index "sms", ["mobile_phone_id"], name: "index_sms_on_mobile_phone_id", using: :btree
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                         null: false
     t.string   "crypted_password"
     t.string   "salt"

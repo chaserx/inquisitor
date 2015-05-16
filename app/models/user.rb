@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :mobile_phone
   has_many :questions
+  has_many :answers
 
   store_accessor :settings, :time_zone
 
