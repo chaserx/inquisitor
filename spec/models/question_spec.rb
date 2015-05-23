@@ -13,10 +13,10 @@ RSpec.describe Question, type: :model do
   end
 
   describe 'an existing question awaiting an answer' do
-    pending "not there yet"
+    pending 'not there yet'
   end
 
   describe 'an existing answered question' do
-    pending "not there yet"
+    pending 'not there yet'
   end
 end

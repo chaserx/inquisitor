@@ -1,6 +1,11 @@
 %p#notice= notice
 
+%p
+  Question
+  = @question.body
 
-= link_to 'Edit', edit_answer_path(@answer)
-\|
-= link_to 'Back', answers_path
+%p
+  Answer
+  = @answer.body
+
+= link_to 'Back', user_question_answers_path(current_user, @question)
