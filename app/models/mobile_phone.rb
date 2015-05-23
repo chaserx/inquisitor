@@ -2,6 +2,8 @@ class MobilePhone < ActiveRecord::Base
   belongs_to :user
   has_many :smses, class: SMS
 
+  default_scope { order(created_at: :desc) }
+
   # TODO(chase): add uniqueness to validation: {scope: :user_id}
   validates :number, presence: true,
                      format: {with: /\A\+\d{11}\z/,

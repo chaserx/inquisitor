@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'help', to: 'page#help', as: :help
 
   resources :users do
-    resources :questions
+    resources :questions do
+      resources :answers, except: [:new, :edit, :update, :create]
+    end
     resources :mobile_phones, except: [:index] do
       member do
         post :verify

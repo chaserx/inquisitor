@@ -1,4 +1,13 @@
 %p#notice= notice
 
+%h2= @question.body
+%hr
 
-= link_to 'Edit', edit_user_question_path(current_user, @question)
+- if @question.answers.any?
+  %ul
+  - @question.answers.each do |answer|
+    %li= answer.body
+- else
+  %p Looks like there are no answers yet for this question.
+
+

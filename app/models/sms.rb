@@ -4,6 +4,8 @@ class SMS < ActiveRecord::Base
   belongs_to :mobile_phone
   validates :mobile_phone, presence: true
 
+  default_scope { order(created_at: :desc) }
+
   def decipher_command message, host
     default_url_options[:host] = host
 

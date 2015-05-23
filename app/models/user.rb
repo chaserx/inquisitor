@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   has_one :mobile_phone
   has_many :questions
+  has_many :answers
+
+  default_scope { order(created_at: :desc) }
 
   store_accessor :settings, :time_zone
 

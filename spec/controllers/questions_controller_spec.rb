@@ -84,7 +84,7 @@ RSpec.describe QuestionsController, type: :controller do
 
         it 'redirects to the created question' do
           post :create, user_id: user.to_param, question: valid_attributes
-          expect(response).to redirect_to([user, Question.last])
+          expect(response).to redirect_to([user, assigns(:question)])
         end
       end
 

@@ -15,19 +15,19 @@
           %ul
             %li
               = link_to 'Questions'
-              %ul
+              = link_to "(+ add new)", new_user_question_path(current_user)
+              %ul.nested
                 - current_user.questions.each do |question|
                   %li= link_to question.body, user_question_path(current_user, question)
-                %li
-                  = link_to "+ new question", new_user_question_path(current_user)
-            - if current_user.mobile_phone
-              %li
-                = link_to 'Update Mobile Phone',
-                  edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
-            - else
-              %li
-                = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
-            %li Download Data
+          %ul
+          - if current_user.mobile_phone
+            %li
+              = link_to 'Update Mobile Phone',
+                edit_user_mobile_phone_path(current_user, current_user.mobile_phone)
+          - else
+            %li
+              = link_to 'Add Mobile Phone', new_user_mobile_phone_path(current_user)
+          %li Download Data
           .user-nav
             %ul.text-align.center
               %li
